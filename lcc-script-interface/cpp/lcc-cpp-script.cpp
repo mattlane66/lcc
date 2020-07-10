@@ -8,15 +8,21 @@ FILE* fp = nullptr;
 
 void StartLCCExternally(std::string filePathExec,Parameters param)
 {
+	/*std::string command_one = filePathExec + " " + param.inputDeviceStr + " " + param.outputDeviceStr + " "
+							  + param.sampleRateStr + " " + param.inputgainStr + " " + 
+							  param.centergainStr + " " + param.endgainStr + " " + 
+							  param.decaygainStr + " " + param.delay_usStr;*/
+	
+	
 	std::string command_one = filePathExec + " " + param.inputDeviceStr + " " + param.outputDeviceStr + " "
 							  + param.sampleRateStr + " " + param.inputgainStr + " " + 
 							  param.centergainStr + " " + param.endgainStr + " " + 
-							  param.decaygainStr + " " + param.delay_usStr;
-	
+							  param.decaygainStr + " " + param.delay_usStr + " pipe";
+							  
 	std::cout << command_one << std::endl;
 	
 	
-	fp = popen(command_one.c_str(),"r");
+	fp = popen(command_one.c_str(),"w");
 	
 	if(fp == nullptr)
 	{
@@ -40,6 +46,14 @@ void SafelyQuitLCC(std::string filePathDataDir)
 	MakeLCCTakeInNewInput(filePathDataDir);
 }
 
+void SafelyQuitLCC_Pipe()
+{
+	SetChoiceToQuitProgram_Pipe();
+	
+	fp = nullptr;
+	
+}
+
 void ChangeParameterValues(std::string filePathDataDir, Parameters param)
 {
 	//changes values in param.txt
@@ -56,6 +70,22 @@ void ChangeParameterValues(std::string filePathDataDir, Parameters param)
 		param_out << param.endgainStr << "\n";
 		param_out << param.decaygainStr << "\n";
 		param_out << param.delay_usStr << "\n";
+	}
+}
+
+void ChangeParameterValues_Pipe(Parameters param)
+{
+	SetChoiceToChangeSettings_Pipe();
+	
+	if(fp)
+	{
+		fprintf (fp, "%s %s %s %s %s\n", param.inputgainStr.c_str(), param.centergainStr.c_str(), 
+										param.endgainStr.c_str(), param.decaygainStr.c_str(), param.delay_usStr.c_str());
+		if (ferror (fp))
+		{
+			fprintf (stderr, "Output to stream failed.\n");
+			exit (EXIT_FAILURE);
+		}
 	}
 }
 
@@ -89,11 +119,37 @@ void SetChoiceToChangeSettings(std::string filePathDataDir)
 	SetChoice(filePathDataDir,choice);
 }
 
+void SetChoiceToChangeSettings_Pipe()
+{
+	if(fp)
+	{
+		fprintf (fp, "%d\n", 3);
+		if (ferror (fp))
+		{
+			fprintf (stderr, "Output to stream failed.\n");
+			exit (EXIT_FAILURE);
+		}
+	}
+}
+
 void SetChoiceToQuitProgram(std::string filePathDataDir)
 {
 	std::string choice = "4";
 	
 	SetChoice(filePathDataDir,choice);
+}
+
+void SetChoiceToQuitProgram_Pipe()
+{
+	if(fp)
+	{
+		fprintf (fp, "%d\n", 4);
+		if (ferror (fp))
+		{
+			fprintf (stderr, "Output to stream failed.\n");
+			exit (EXIT_FAILURE);
+		}
+	}
 }
 
 void SetChoiceToTurnOnLCC(std::string filePathDataDir)

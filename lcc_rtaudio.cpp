@@ -555,14 +555,11 @@ int main ( int argc, char *argv[] )
 		decaygain=dBconv(strtod(argv[7], NULL));
 		delay_us=strtod(argv[8], NULL);
 		
-		if(*argv[9] == 'pipe')
-		{
-			for (int i=0; i<buflen; i ++){
-			prevOut_LR[i]=0;
-			}
-			
-			setupAudioStreamsWithPipeInput(inputDevice, outputDevice, samplerate);
+		for (int i=0; i<buflen; i ++){
+		prevOut_LR[i]=0;
 		}
+		
+		setupAudioStreamsWithPipeInput(inputDevice, outputDevice, samplerate);
 		
 		
 	}

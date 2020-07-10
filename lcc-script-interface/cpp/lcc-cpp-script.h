@@ -25,8 +25,12 @@ void EndLCCExternally();
 //function to safely quit LCC
 void SafelyQuitLCC(std::string filePathDataDir);
 
+void SafelyQuitLCC_Pipe();
+
 //funtion to write new parameters in param.txt
 void ChangeParameterValues(std::string filePathDataDir, Parameters param);
+
+void ChangeParameterValues_Pipe(Parameters param);
 
 //function to indicate to lcc script interface to take in new input
 void MakeLCCTakeInNewInput(std::string filePathDataDir);
@@ -34,8 +38,12 @@ void MakeLCCTakeInNewInput(std::string filePathDataDir);
 //function to set choice.txt to indicate a change in settings
 void SetChoiceToChangeSettings(std::string filePathDataDir);
 
+void SetChoiceToChangeSettings_Pipe();
+
 //function to set choice.txt to indicate choice to quit program
 void SetChoiceToQuitProgram(std::string filePathDataDir);
+
+void SetChoiceToQuitProgram_Pipe();
 
 //function to set choice.txt to indicate choice to turn on lcc program
 void SetChoiceToTurnOnLCC(std::string filePathDataDir);
