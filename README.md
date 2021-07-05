@@ -8,7 +8,7 @@ This digital barrier (LCC) preserves spatialization perceptual cues (ITD and ILD
 
 LCC works with symmetric head placement with respect to the speakers in front of the speakers. That is, the speakers should be arranged in a narrow/skinny isosceles triangle configuration, not an equilateral triangle configuration (sometimes called the 60° stereo triangle). 
 Please read our white papers found in the [link](https://medium.com/@mattlane66/spatial-audio-for-speaker-connected-devices-cdf96d127f67) under the [Theory](https://github.com/MeteorStudioASU/lcc/blob/master/README.md#theory) section of this page for more detailed information and configuration suggestions to get the best possible results.
-Hear low-quality previews [here](https://vimeo.com/258737254) and [here](https://vimeo.com/258736065).
+Hear low-quality previews [here](https://vimeo.com/258737254) and [here](https://vimeo.com/258736065). Just make sure your stereo loudspeakers are closely spaced.
 
 We are fine-tuning a solution for crosstalk cancellation with arbitrary tracked head pose. Contact us for more details if you're interested.
 
