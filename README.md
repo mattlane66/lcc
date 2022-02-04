@@ -15,7 +15,7 @@ We are fine-tuning a solution for crosstalk cancellation with arbitrary tracked 
 
 ## Setup (macOS)
 
-1. Install virtual audio device so that you can route audio inputs and outputs (e.g., https://github.com/mattingalls/Soundflower/releases/ found in the assists sections).
+1. Install virtual audio device so that you can route audio inputs and outputs (e.g., https://github.com/mattingalls/Soundflower/releases/ or https://existential.audio/blackhole/ found in the assists sections).
 
 2. In your Apple System Preferences for Sound, set your desired speakers to play at a comfortably loud volume. You can further adjust the system volume later with your virtual audio device / Soundflower.
 
